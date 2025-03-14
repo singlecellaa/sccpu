@@ -35,6 +35,7 @@ module ctrl(Op, Funct7, Funct3, Zero,
     wire i_srl  = rtype& ~Funct7[6]&~Funct7[5]&~Funct7[4]&~Funct7[3]&~Funct7[2]&~Funct7[1]&~Funct7[0]& Funct3[2]&~Funct3[1]& Funct3[0]; // srl 0000000 101
     wire i_sra  = rtype& ~Funct7[6]& Funct7[5]&~Funct7[4]&~Funct7[3]&~Funct7[2]&~Funct7[1]&~Funct7[0]& Funct3[2]&~Funct3[1]& Funct3[0]; // sra 0100000 101
     wire i_slt  = rtype& ~Funct7[6]&~Funct7[5]&~Funct7[4]&~Funct7[3]&~Funct7[2]&~Funct7[1]&~Funct7[0]&~Funct3[2]& Funct3[1]&~Funct3[0]; // slt 0000000 010
+    wire i_sltu = rtype& ~Funct7[6]&~Funct7[5]&~Funct7[4]&~Funct7[3]&~Funct7[2]&~Funct7[1]&~Funct7[0]&~Funct3[2]& Funct3[1]& Funct3[0]; // slt 0000000 011
 
  // i format load 0000011
     wire itype_l  = ~Op[6]&~Op[5]&~Op[4]&~Op[3]&~Op[2]&Op[1]&Op[0]; //0000011
@@ -88,21 +89,22 @@ module ctrl(Op, Funct7, Funct3, Zero,
     assign NPCOp[1] = i_jal;
     assign NPCOp[0] = sbtype & Zero;
 
-// ALUOp_nop 5'b00000
-// ALUOp_lui 5'b00001
-// ALUOp_add 5'b00011
-// ALUOp_sub 5'b00100
-// ALUOp_xor 5'b01100
-// ALUOp_or  5'b01101
-// ALUOp_and 5'b01110
-// ALUOp_sll 5'b01111
-// ALUOp_srl 5'b10000
-// ALUOp_sra 5'b10001
-// ALUOp_slt 5'b01010
+// ALUOp_nop  5'b00000
+// ALUOp_lui  5'b00001
+// ALUOp_add  5'b00011
+// ALUOp_sub  5'b00100
+// ALUOp_xor  5'b01100
+// ALUOp_or   5'b01101
+// ALUOp_and  5'b01110
+// ALUOp_sll  5'b01111
+// ALUOp_srl  5'b10000
+// ALUOp_sra  5'b10001
+// ALUOp_slt  5'b01010
+// ALUOp_sltu 5'b01011
     assign ALUOp[4] = i_srl | i_sra;
-    assign ALUOp[3] = i_and | i_or | i_sll | i_xor | i_slt;
+    assign ALUOp[3] = i_and | i_or | i_sll | i_xor | i_slt | i_sltu;
     assign ALUOp[2] = i_and | i_or | i_sub | i_beq | i_sll | i_xor;
-    assign ALUOp[1] = i_addi | i_add | i_and | i_sll | itype_l | stype | i_slt ;
-	  assign ALUOp[0] = i_addi | i_add | i_or | LUI | i_sll | i_sra | itype_l | stype ;
+    assign ALUOp[1] = i_addi | i_add | i_and | i_sll | itype_l | stype | i_slt | i_sltu;
+	  assign ALUOp[0] = i_addi | i_add | i_or | LUI | i_sll | i_sra | itype_l | stype | i_sltu;
 
 endmodule

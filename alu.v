@@ -11,16 +11,17 @@ module alu(A, B, ALUOp, C, Zero);
        
    always @( * ) begin
       case ( ALUOp )
-      `ALUOp_lui:C=B;
-      `ALUOp_add:C=A+B;
-      `ALUOp_sub:C=A-B;  //and beq
-      `ALUOp_xor:C=A^B;
-      `ALUOp_or:C=A|B;
-      `ALUOp_and:C=A&B;
-      `ALUOp_sll:C=A<<B;
-      `ALUOp_srl:C=A>>B;
-      `ALUOp_sra:C=A>>>B;
-      `ALUOp_slt:C=A<B;
+      `ALUOp_lui : C=B;
+      `ALUOp_add : C=A+B;
+      `ALUOp_sub : C=A-B;  //and beq
+      `ALUOp_xor : C=A^B;
+      `ALUOp_or  : C=A|B;
+      `ALUOp_and : C=A&B;
+      `ALUOp_sll : C=A<<B;
+      `ALUOp_srl : C=A>>B;
+      `ALUOp_sra : C=A>>>B;
+      `ALUOp_slt : C=A<B;
+      `ALUOp_sltu: C=$unsigned(A)<$unsigned(B);
       default: C=A;
       endcase
    end // end always
