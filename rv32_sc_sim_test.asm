@@ -31,5 +31,8 @@ label1: beq x11, x17, label2         #taken
 label2: addi	x20, x0, 0x20        #x20 <== 0x00000020
         slt     x21, x7, x5          #x21 <== 0x1,  0x12344 < 0x12345
         sltu    x22, x5, x6          #x21 <== 0x1,  0x12345 < 0xffff0
+        andi    x22, x22,0x0         #x23 <== 0x0,  0x1 & 0x0
+        ori     x22, x22,0x3         #x22 <== 0x3,  0x3 | 0x0
+        xori    x22, x22,0x1         #x22 <== 0x2,  0x3 ^ 0x1
         jal x0, label1               
 

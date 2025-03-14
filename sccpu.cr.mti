@@ -1,23 +1,9 @@
-D:/1asmfile/modelsim_project/sccpu/im.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/im.v
+D:/1asmfile/modelsim_project/sccpu/alu.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/alu.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module im
+-- Compiling module alu
 
 Top level modules:
-	im
-
-} {} {}} D:/1asmfile/modelsim_project/sccpu/sccomp_tb.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/sccomp_tb.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module sccomp_tb
-
-Top level modules:
-	sccomp_tb
-
-} {} {}} D:/1asmfile/modelsim_project/sccpu/SCCPU.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/SCCPU.v
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module SCCPU
-
-Top level modules:
-	SCCPU
+	alu
 
 } {} {}} D:/1asmfile/modelsim_project/sccpu/PC.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/PC.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -26,8 +12,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	PC
 
-} {} {}} D:/1asmfile/modelsim_project/sccpu/ctrl_encode_def.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/ctrl_encode_def.v
+} {} {}} D:/1asmfile/modelsim_project/sccpu/SCCPU.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/SCCPU.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module SCCPU
+
+Top level modules:
+	SCCPU
 
 } {} {}} D:/1asmfile/modelsim_project/sccpu/RF.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/RF.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -36,19 +26,29 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	RF
 
-} {} {}} D:/1asmfile/modelsim_project/sccpu/NPC.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/NPC.v
+} {} {}} D:/1asmfile/modelsim_project/sccpu/sccomp_tb.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/sccomp_tb.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module NPC
+-- Compiling module sccomp_tb
 
 Top level modules:
-	NPC
+	sccomp_tb
 
-} {} {}} D:/1asmfile/modelsim_project/sccpu/EXT.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/EXT.v
+} {} {}} D:/1asmfile/modelsim_project/sccpu/sccomp.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/sccomp.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module EXT
+-- Compiling module sccomp
 
 Top level modules:
-	EXT
+	sccomp
+
+} {} {}} D:/1asmfile/modelsim_project/sccpu/im.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/im.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module im
+
+Top level modules:
+	im
+
+} {} {}} D:/1asmfile/modelsim_project/sccpu/ctrl_encode_def.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/ctrl_encode_def.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 
 } {} {}} D:/1asmfile/modelsim_project/sccpu/dm.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/dm.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -57,11 +57,18 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	dm
 
-} {} {}} D:/1asmfile/modelsim_project/sccpu/sccomp.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/sccomp.v
+} {} {}} D:/1asmfile/modelsim_project/sccpu/EXT.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/EXT.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module sccomp
+-- Compiling module EXT
 
 Top level modules:
-	sccomp
+	EXT
+
+} {} {}} D:/1asmfile/modelsim_project/sccpu/NPC.v {1 {vlog -work work -stats=none D:/1asmfile/modelsim_project/sccpu/NPC.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module NPC
+
+Top level modules:
+	NPC
 
 } {} {}}

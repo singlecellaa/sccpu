@@ -44,7 +44,10 @@ module ctrl(Op, Funct7, Funct3, Zero,
   // i format 0010011
     wire itype_r  = ~Op[6]&~Op[5]&Op[4]&~Op[3]&~Op[2]&Op[1]&Op[0]; //0010011
     wire i_addi  =  itype_r& ~Funct3[2]& ~Funct3[1]& ~Funct3[0]; // addi 000
-    	
+    wire i_andi  =  itype_r&  Funct3[2]&  Funct3[1]&  Funct3[0]; // andi 111
+    wire i_ori   =  itype_r&  Funct3[2]&  Funct3[1]& ~Funct3[0]; // ori  110
+    wire i_xori  =  itype_r&  Funct3[2]& ~Funct3[1]& ~Funct3[0]; // xori 100
+
   // s format 0100011
     wire stype  = ~Op[6]&Op[5]&~Op[4]&~Op[3]&~Op[2]&Op[1]&Op[0]; //0100011
     wire i_sw   =  stype& ~Funct3[2]& Funct3[1]&~Funct3[0]; // sw 010
@@ -69,7 +72,7 @@ module ctrl(Op, Funct7, Funct3, Zero,
   // EXT_CTRL_UTYPE	      6'b000010
   // EXT_CTRL_JTYPE	      6'b000001
   assign EXTOp[5]    = 0;
-  assign EXTOp[4]    = i_addi | itype_l;
+  assign EXTOp[4]    = i_addi | itype_l | i_andi | i_ori | i_xori;
   assign EXTOp[3]    = stype; 
   assign EXTOp[2]    = sbtype; 
   assign EXTOp[1]    = LUI;
@@ -102,9 +105,9 @@ module ctrl(Op, Funct7, Funct3, Zero,
 // ALUOp_slt  5'b01010
 // ALUOp_sltu 5'b01011
     assign ALUOp[4] = i_srl | i_sra;
-    assign ALUOp[3] = i_and | i_or | i_sll | i_xor | i_slt | i_sltu;
-    assign ALUOp[2] = i_and | i_or | i_sub | i_beq | i_sll | i_xor;
-    assign ALUOp[1] = i_addi | i_add | i_and | i_sll | itype_l | stype | i_slt | i_sltu;
-	  assign ALUOp[0] = i_addi | i_add | i_or | LUI | i_sll | i_sra | itype_l | stype | i_sltu;
+    assign ALUOp[3] = i_and | i_andi | i_or | i_ori | i_sll | i_xor | i_xori | i_slt | i_sltu;
+    assign ALUOp[2] = i_and | i_andi | i_or | i_ori | i_sub | i_beq | i_sll | i_xor | i_xori;
+    assign ALUOp[1] = i_addi | i_add | i_and | i_andi | i_sll | itype_l | stype | i_slt | i_sltu;
+	  assign ALUOp[0] = i_addi | i_add | i_or | i_ori | LUI | i_sll | i_sra | itype_l | stype | i_sltu;
 
 endmodule
