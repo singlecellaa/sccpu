@@ -34,6 +34,8 @@ label2: addi	x20, x0, 0x20        #x20 <== 0x00000020
         andi    x22, x22,0x0         #x22 <== 0x0,  0x1 & 0x0
         ori     x22, x22,0x3         #x22 <== 0x3,  0x3 | 0x0
         xori    x22, x22,0x1         #x22 <== 0x2,  0x3 ^ 0x1
-        srli    x23, x22,0x1         #x23 <== 0x1,  0x2 >>0x1
+        srli    x23, x6, 0x4         #x23 <== 0x0FFFFF00
+        srai    x24, x6, 0x4         #x24 <== 0xFFFFFF00
+        slli    x25, x5, 0x4         #x25 <== 0x23450000
         jal x0, label1               
 
