@@ -37,5 +37,7 @@ label2: addi	x20, x0, 0x20        #x20 <== 0x00000020
         srli    x23, x6, 0x4         #x23 <== 0x0FFFFF00
         srai    x24, x6, 0x4         #x24 <== 0xFFFFFF00
         slli    x25, x5, 0x4         #x25 <== 0x23450000
+        slti    x26, x6,0x7FF        #x26 <== 0x1, 0x2 < 0x123
+        sltiu   x26, x6,0x7FF        #x27 <== 0x1, 0x2 < 0x7FF
         jal x0, label1               
 
