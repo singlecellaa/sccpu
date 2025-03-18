@@ -23,12 +23,7 @@ main:	lui x5, 0x12345              #x5 <== 0x12345
         beq x11, x16, label1         #not taken
 	addi	x0, x0, 0            #nop
 	addi	x0, x0, 0            
-	addi	x18, x0, 0x18        #x18 <== 0x00000018  
-label1: beq x11, x17, label2         #taken
-	addi	x0, x0, 0            #nop
-	addi	x0, x0, 0        
-	addi	x19, x0, 0x19        #x19 <== 0x00000000
-label2: addi	x20, x0, 0x20        #x20 <== 0x00000020
+	addi	x18, x0, 0x18        #x18 <== 0x00000018
         slt     x21, x7, x5          #x21 <== 0x1,  0x12344 < 0x12345
         sltu    x22, x5, x6          #x21 <== 0x1,  0x12345 < 0xffff0
         andi    x22, x22,0x0         #x22 <== 0x0,  0x1 & 0x0
@@ -38,6 +33,26 @@ label2: addi	x20, x0, 0x20        #x20 <== 0x00000020
         srai    x24, x6, 0x4         #x24 <== 0xFFFFFF00
         slli    x25, x5, 0x4         #x25 <== 0x23450000
         slti    x26, x6,0x7FF        #x26 <== 0x1, 0x2 < 0x123
-        sltiu   x26, x6,0x7FF        #x27 <== 0x1, 0x2 < 0x7FF
+        sltiu   x26, x6,0x7FF        #x26 <== 0x0, 0x2 < 0x7FF  
+label1: lui     x5, 0x1              #x5 <== 0x1
+        beq x11, x17, label2         #taken
+	jal x0, label1
+label2: lui     x5, 0x2
+        bne     x25, x26, label3     #0x2345 != 0x0
+        jal x0, label2
+label3: lui     x5, 0x3
+        bge     x23,x24, label4
+        jal x0, label3
+label4: lui     x5, 0x4
+        bgeu    x24,x23, label5
+        jal x0, label4
+label5: lui     x5, 0x5
+        blt     x24,x23, label6
+        jal x0, label5
+label6: lui     x5, 0x6
+        bltu    x23,x24, label7
+        jal x0, label6
+label7: lui     x5, 0x7
+        addi    x0, x0, 0
         jal x0, label1               
 
