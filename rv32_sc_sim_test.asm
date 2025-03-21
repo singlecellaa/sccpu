@@ -53,6 +53,9 @@ label6: lui     x5, 0x6
         bltu    x23,x24, label7
         jal x0, label6
 label7: lui     x5, 0x7
+        jal x26,label8 
+        jal x0, label7            
         addi    x0, x0, 0
-        jal x0, label1               
-
+label8: lui     x5, 0x8
+        jalr x0, x26, 0
+        jal x0, label1
